@@ -1,0 +1,26 @@
+{
+  "name": "sha256sum",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Compute and check SHA256 message digest.",
+  "main": "index.js",
+  "scripts": {
+    "save": "git add .; git commit -m 'New Release'; git push; npm version patch; npm publish; git push;",
+    "test": "./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/sha256sum.git"
+  },
+  "keywords": ["SHA256", "sha256sum", "message digest"],
+  "author": "catpea <corporate.miou@gmail.com>",
+
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catpea/sha256sum/issues"
+  },
+  "homepage": "https://github.com/catpea/sha256sum#readme",
+  "dependencies": {
+    "glob": "^7.1.7"
+  }
+}
