@@ -40,6 +40,19 @@ const verification = await sha256sum('test/*.txt', checksums); // NOTE: 2nd argu
 
 ```
 
+## Sub Directories
+
+You can match sub-directories by using "\*\*" in a path fragment alone: ```const response = await sha256sum('test/**/*.txt');```
+
+This will result in the following entry:
+
+```javascript
+[
+  'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  'test/subdir/test3.txt'
+]
+```
+
 ## Advanced
 
 For your convenience you can customize the algorithm without switching libraries.

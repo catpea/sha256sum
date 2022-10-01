@@ -13,20 +13,12 @@ async function main(pattern, checksums, algorithm='sha256'){
 }
 
 async function verify(pattern, previous, algorithm){
-  const response = [];
   const current = Object.fromEntries((await create(pattern, algorithm)).map(([a,b])=>[b,a]));
-  for (const [sum, file] of previous){
-    response.push([file, sum==current[file]?true:false])
-  }
-  return response;
+  return previous.map(([sum, file])=>([[file, sum==current[file]?true:false]])).flat(1)
 }
 
 async function create(pattern, algorithm){
-  const response = [];
-  for (const item of await files(pattern)) {
-    response.push([await checksum(item, algorithm), item ]);
-  }
-  return response;
+  return await Promise.all((await files(pattern)).map(async item=>[await checksum(item, algorithm), item ]));
 }
 
 function checksum(location, algorithm){
